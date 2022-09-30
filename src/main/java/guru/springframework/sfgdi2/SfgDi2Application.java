@@ -1,6 +1,7 @@
 package guru.springframework.sfgdi2;
 
 import guru.springframework.sfgdi2.controllers.*;
+import guru.springframework.sfgdi2.pets.PetServiceFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -16,6 +17,11 @@ public class SfgDi2Application {
 		I18NController i18NController = (I18NController)  ctx.getBean("i18NController");
 
 		System.out.println(i18NController.sayHello());
+
+		PetServiceFactory petServiceFactory = (PetServiceFactory) ctx.getBean("petServiceFactory") ;
+
+		System.out.println(petServiceFactory.getPetService("dog").getPetName());
+		System.out.println(petServiceFactory.getPetService("cat").getPetName());
 
 
 		System.out.println(myController.sayHello());
